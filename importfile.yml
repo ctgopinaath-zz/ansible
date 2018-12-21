@@ -1,0 +1,9 @@
+---
+- name: httpd install
+  hosts: node1,node2,node3
+  tasks:
+   - name: download the httpd.conf
+     get_url:
+      url: http://192.168.243.11/ansible/httpd.conf
+      dest: /etc/httpd/conf/httpd.conf
+      mode: 0644

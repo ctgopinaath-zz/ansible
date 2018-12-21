@@ -1,0 +1,10 @@
+---
+- name: httpd install
+  hosts: node1,node2,node3
+  tasks:
+   - name: Index Html
+     copy:
+      content: "Hello XXX"
+      dest: /var/www/html/index.html
+      mode: 0644
+

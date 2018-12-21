@@ -1,0 +1,9 @@
+---
+- name: httpd install
+  hosts: node1,node2,node3
+  tasks:
+   - name: Replace AllowOverride none
+     replace:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: "AllowOverride none"
+      replace: "AllowOverride AuthConfig"

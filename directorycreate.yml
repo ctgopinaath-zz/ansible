@@ -1,0 +1,9 @@
+---
+- name: httpd-auth
+  hosts: node1,node2
+  tasks:
+   - name: gopi directory created
+     file:
+      path: /tmp/gopinaath
+      state: directory
+      mode: 0755

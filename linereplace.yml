@@ -1,0 +1,10 @@
+---
+- name: httpd install
+  hosts: node1,node2,node3
+  tasks:
+   - name: Content change
+     lineinfile:
+      path: /var/www/html/index.html
+      regexp: "Hello Inid"
+      line: "Hi World"
+      mode: 0644
