@@ -1,0 +1,13 @@
+Ad hoc command to copy the files from master node to others nodes
+	ansible nodes/group -m copy -a "src=/etc/hosts dest=/etc/hosts"
+
+Ad hoc command to manage the files at destination from master node 
+	ansible nodes/group -m file -a "dest=/tmp/gopi.txt mode=600"
+	ansible nodes/group -m file -a "dest=/tmp/gopi.txt mode=600 owner=raj group=raj"
+
+Ad hoc command to create a directory
+	ansible nodes/group -m file -a "dest=/tmp/dir mode=600 owner=raj group=raj state=directory"
+
+Ad hoc command to delete a directory
+	ansible node/group -m file -a "dest=/tmp/dir state="absent"
+
