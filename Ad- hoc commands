@@ -11,3 +11,7 @@ Ad hoc command to create a directory
 Ad hoc command to delete a directory
 	ansible node/group -m file -a "dest=/tmp/dir state="absent"
 
+Ad hoc command to execute any command
+	ansible node/groups -m command -a "command to be executed"
+	
+
