@@ -1,0 +1,72 @@
+Install 3 VM's or 3 physical machines with internet connectivity..
+
+Perform the following operations as a root user in all three nodes
+
+1. Stop and disable the firewalld
+      # systemctl stop firewalld
+      # systemctl disable firewalld
+      
+2. Set the SELinux policies at Permissive mode in all three nodes
+      # setenforce 0
+      
+3. update the hostname in all three nodes
+      # hostname <anyhostname>
+      Ex: hostname server
+          hostname node1
+          hostname node2
+          
+4. update /etc/hosts file in all three nodes  //  [Enter the ip address from each host]
+        Ex: 192.168.10.23   server
+            192.168.10.24   client1
+            192.168.10.25   client2
+            
+5. Create a user ansible in all three nodes
+        Ex: 
+            useradd ansible
+            
+6. Set password for ansible user in all three node
+        Ex: passwd ansible
+        
+7. Add the user ansible to sudoers list using the following command in all three nodes
+        # cat >> /etc/sudoers     //After typing this command, press enter...then type the following command and press ctrl + c
+        
+        ansible ALL=(ALL) ALL
+
+--------------------------------------------------------------------------------------------------------------------------------
+Perform the following operations in server node as a ansible user
+
+8. Generate RSA key from server host as a ansible user
+      $ ssh-keygen      //press enter for all default options
+
+9. Copy the key to all the client nodes (Ensure that you are in home directory while typing this command)
+      $ ssh-copy-id ansible@client1
+      $ ssh-copy-id ansible@client2
+
+10. Create a directory under home directory (directory name can be any valid identifier)
+      $ mkdir playbook
+
+11. Change the current directory to playbook
+      $ cd playbook
+      
+12. Create ansible.cfg file and add the contents as mentioned in the following link
+    
+        $ vi ansible.cfg    //Enter the contents from the link below 
+        
+          https://github.com/ctgopinaath/ansible/blob/ansible-intro-playbooks/ansible.cfg
+
+13. Create a file hosts under playbook directory with following contents
+
+        $ vi hosts
+        
+          [group1]
+          client1
+          [group2]
+          client2
+          
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+At end of 13 steps the environemnt setup to run ansible playbooks are ready!!!!
+        
+
+        
+        
